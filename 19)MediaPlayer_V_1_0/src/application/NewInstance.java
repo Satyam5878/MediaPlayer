@@ -163,19 +163,6 @@ public class NewInstance {
 		loadDataStores();
 		createDirectories();
 		
-		/*
-		Button btn = new Button("new");
-		btn.setOnAction(e->{
-			try {
-				createNewInstance();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		stage.setScene(new Scene(new VBox(btn)));
-		
-		*/
 		createMediaListFile();
 		decorateStage();
 		addDnDHandlerToScene();
@@ -186,13 +173,6 @@ public class NewInstance {
 		this.stage.show();
 		this.stage.getIcons().add(new Image(this.getClass().getClassLoader().getResource("Logo2.jpg").toString()));
 		
-		/*
-		Thread.sleep(1000);
-		System.out.println("Stage Shown");
-		callFunc();
-		System.out.println("Called Function");
-		*/
-		//stage.setIconified(false);
 	}
 	private void bindMediaPlayerProperty(){
 		//binding PlayerRate
@@ -252,19 +232,7 @@ public class NewInstance {
 		this.totalTimeProperty.addListener(new ChangeListener<Duration>(){
 			@Override
 			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-				// TODO Auto-generated method stub
-				//totalTimeProperty.set(newValue);
-				//System.out.println("totalTimeProperty : "+newValue.toString());
 				
-				/*
-				totalTimeLblProperty.set(String.format("%02d:%02d:%02d",//.textProperty()
-						TimeUnit.MILLISECONDS.toHours((long) newValue.toMillis()),
-						TimeUnit.MILLISECONDS.toMinutes((long) newValue.toMillis())
-								-TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours((long)newValue.toMillis())),
-						TimeUnit.MILLISECONDS.toSeconds((long) newValue.toMillis())
-							-TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes((long) newValue.toMillis()))
-						));
-					*/
 				totalTimeLbl.textProperty().set(String.format("%02d:%02d:%02d",//.textProperty()
 						TimeUnit.MILLISECONDS.toHours((long) newValue.toMillis()),
 						TimeUnit.MILLISECONDS.toMinutes((long) newValue.toMillis())
@@ -275,25 +243,6 @@ public class NewInstance {
 				
 			}
 		});
-		/*
-		this.startTimeProperty.addListener(new ChangeListener<Duration>(){
-			@Override
-			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-				// TODO Auto-generated method stub
-				//startTimeProperty.set(newValue);
-				System.out.println("startTimeProperty : "+newValue.toString());
-			}
-		});
-		this.stopTimeProperty.addListener(new ChangeListener<Duration>(){
-			@Override
-			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-				// TODO Auto-generated method stub
-				//stopTimeProperty.set(newValue);
-				System.out.println("stopTimeProperty : "+newValue.toString());
-			}
-		});
-		
-		*/
 		this.titleProperty.addListener(new ChangeListener<String>(){
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -391,20 +340,6 @@ public class NewInstance {
 					this.slider.setMaxWidth(5);
 					//this.slider.setMaxHeight(0);
 					
-				/*
-					this.minimizeBtn = new Button(" __ ");
-					//this.minimizeBtn.setPadding(new Insets(.5));
-					this.minimizeBtn.setOnMouseClicked(e->{
-						this.stage.setIconified(true);
-					});
-					this.minimizeBtn.setOnMouseEntered(e->{
-						this.minimizeBtn.setStyle("-fx-color:E24D4D");
-					});
-					this.minimizeBtn.setOnMouseExited(e->{
-						this.minimizeBtn.setStyle("-fx-color:gray");
-					});
-					this.minimizeBtn.setStyle("-fx-color:gray;");
-				*/	
 					this.minimizeBtn = new ImageView(new Image(this.getClass().getClassLoader().getResource("minimize_not_active.jpg").toString()));
 					
 					this.minimizeBtn.setOnMouseEntered(e->{
@@ -418,24 +353,6 @@ public class NewInstance {
 						this.stage.setIconified(true);
 					});
 					
-					
-					/*
-					this.fullScreenBtn = new Button("_F");
-					//this.fullScreenBtn.setPadding(new Insets(.5));
-					this.fullScreenBtn.setOnMouseClicked(e->{
-						//this.stage.setFullScreen(this.fullScreen);
-					//	this.fullScreen = !this.fullScreen;
-						this.stage.setMaximized(true);
-					});
-					this.fullScreenBtn.setOnMouseEntered(e->{
-						this.fullScreenBtn.setStyle("-fx-color:E24D4D");
-					});
-					this.fullScreenBtn.setOnMouseExited(e->{
-						this.fullScreenBtn.setStyle("-fx-color:gray");
-					});
-					this.fullScreenBtn.setStyle("-fx-color:gray;");
-					
-					*/
 					this.fullScreenBtn = new ImageView(new Image(this.getClass().getClassLoader().getResource("fullscreen_not_active.jpg").toString()));
 					this.fullScreenBtn.setOnMouseEntered(e->{
 						this.fullScreenBtn.setImage(new Image(this.getClass().getClassLoader().getResource("fullscreen_active.jpg").toString()));
@@ -457,41 +374,8 @@ public class NewInstance {
 							this.fullScreen.set(!this.fullScreen.get());
 						}
 						
-					/*
-						else if(e.isControlDown()&& (e.getCode()==KeyCode.R)){
-							if(this.mediaPlayListFile.size()>0){
-								this.playMedia(this.mediaPlayListFile.iterator().next());
-								//this.gdTxtFldProperty.set("Reloaded the PlayList.");
-								//this.mediaView.getMediaPlayer().
-							}
-							else{
-								System.out.println("No Need to Reload.");
-							}
-							
-						}
-						else if(e.isControlDown()&&(e.getCode() == KeyCode.F)){
-							if(this.rateProperty.get()<7.9){
-								this.rateProperty.set(this.rateProperty.get()+.1);
-							}
-						}
-						else if(e.isControlDown()&&(e.getCode() == KeyCode.S)){
-							if(this.rateProperty.get()>0.1){
-								this.rateProperty.set(this.rateProperty.get()-.1);
-							}
-						}
-					*/
-						
 						else if(e.isControlDown()){
 							if(e.getCode()==KeyCode.R){
-					/*	Date 24 jan			if(this.mediaPlayListFile.size()>0){
-									this.playMedia(this.mediaPlayListFile.iterator().next());
-									//this.gdTxtFldProperty.set("Reloaded the PlayList.");
-									//this.mediaView.getMediaPlayer().
-								}
-								else{
-									System.out.println("No Need to Reload.");
-								}
-								*/
 								reloadMedia();
 							}
 							else if(e.getCode() == KeyCode.T){
@@ -515,8 +399,6 @@ public class NewInstance {
 								if(this.volumeProperty.get() <= .96){
 									System.out.println("inside changer");
 									this.volumeProperty.set(this.volumeProperty.get()+0.05);
-									
-									//this.mediaView.getMediaPlayer().setVolume(this.volumeProperty.get());
 								}
 							}
 							else if((e.getCode() == KeyCode.SUBTRACT) || (e.getCode() == KeyCode.MINUS)){
@@ -537,11 +419,6 @@ public class NewInstance {
 							
 						}
 					});
-					//this.stage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.ESCAPE));
-					/*this.closeBtn = new Button("",new ImageView(
-												new Image(
-												this.getClass().getClassLoader().getResource("close.jpg").toString())));
-					*/
 					this.maximizeBtn = new ImageView(new Image(this.getClass().getClassLoader().getResource("restore_not_active.jpg").toString()));
 					this.maximizeBtn.setOnMouseEntered(e->{
 						if(this.maximized){
@@ -562,23 +439,6 @@ public class NewInstance {
 						this.stage.setMaximized(maximized);
 					});
 					
-					
-					/*
-					this.closeBtn = new Button("_X");
-					//this.closeBtn.setPadding(new Insets(.5));
-					this.closeBtn.setOnMouseClicked(e->{
-						//Platform.exit();
-						this.stage.close();
-					});
-					this.closeBtn.setOnMouseEntered(e->{
-						this.closeBtn.setStyle("-fx-color:E24D4D");
-					});
-					this.closeBtn.setOnMouseExited(e->{
-						this.closeBtn.setStyle("-fx-color:gray");
-					});
-					this.closeBtn.setStyle("-fx-color:gray;");
-					
-					*/
 					this.closeBtn = new ImageView(new Image(this.getClass().getClassLoader().getResource("close_not_active.jpg").toString()));
 					this.closeBtn.setOnMouseEntered(e->{
 						this.closeBtn.setImage(new Image(this.getClass().getClassLoader().getResource("close_active.jpg").toString()));
@@ -589,12 +449,6 @@ public class NewInstance {
 					this.closeBtn.setOnMouseClicked(e->{
 						this.stage.close();
 					});
-					
-					
-					
-					
-					
-					
 					
 					hbox3.getChildren().addAll(this.slider,this.fullScreenBtn,this.minimizeBtn,this.maximizeBtn,this.closeBtn);
 				hbox1.getChildren().addAll(hbox2,hbox3);
@@ -620,8 +474,6 @@ public class NewInstance {
 				this.mediaView.setOnError((MediaErrorEvent)->{
 					System.out.println("MediaViewError");
 				});
-			//	this.mediaView.fitWidthProperty().bind(bpane.widthProperty().multiply(.99));
-			//	this.mediaView.fitHeightProperty().bind(vbox2.heightProperty().multiply(fractionW.add(.8)));
 				this.mediaView.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
 					@Override
@@ -638,36 +490,7 @@ public class NewInstance {
 			bpane.setCenter(vbox2);
 		}
 		private void setBottomBorderPane(){
-			/*hbox4 = new HBox();
-			//	hbox4.minWidthProperty().bind(root.widthProperty());
-				vbox1 = new VBox();
-					//vbox1.minWidthProperty().bind(hbox4.widthProperty());
-					vbox1.setSpacing(10);
-							hbox5 = new HBox();
-								hbox5.minWidthProperty().bind(vbox1.widthProperty().multiply(.7));
-								hbox5.setSpacing(10);
-								hbox5.setStyle("-fx-background-color:#3B3C36;");
-								this.currentTimeLbl = new Label(this.currentTimeLblProperty.get());
-								this.currentTimeLbl.textProperty().bind(this.currentTimeLblProperty);
-								this.currentTimeLbl.setTextFill(Color.web("#C46210"));
-								this.currentTimeLbl.minWidthProperty().bind(hbox5.widthProperty().multiply(.2));
-								
-								this.slider2 = new Slider();
-								this.slider2.minWidthProperty().bind(hbox5.widthProperty().multiply(.6));
-								
-								this.totalTimeLbl = new Label(this.totalTimeLblProperty.get());
-								this.totalTimeLbl.minWidthProperty().bind(hbox5.widthProperty().multiply(.2));
-								this.totalTimeLbl.textProperty().bind(totalTimeLblProperty);
-								this.totalTimeLbl.setTextFill(Color.web("#C46210"));
-								hbox5.getChildren().addAll(this.currentTimeLbl,this.slider2,this.totalTimeLbl);
-							hbox6 =  new HBox();
-								hbox6.minWidthProperty().bind(vbox1.widthProperty());
-								hbox6.setSpacing(10);
-								hbox6.setStyle("-fx-background-color:#3B3C36;");
-					vbox1.getChildren().addAll(hbox5);
-				hbox4.getChildren().addAll(vbox1);
-			bpane.setBottom(hbox4);
-			*/
+	
 			Rectangle2D r2d = Screen.getPrimary().getVisualBounds();
 			DoubleProperty fractionW = new SimpleDoubleProperty();
 			fractionW.bind(this.stage.widthProperty().divide(r2d.getWidth()*8));
@@ -690,22 +513,16 @@ public class NewInstance {
 								hbox7.minWidthProperty().bind(hbox5.widthProperty().multiply(fractionW.add(.7)));
 								hbox7.setPrefHeight(10);
 								this.currentTimeLbl = new Label(this.currentTimeLblProperty.get());
-								//this.currentTimeLbl.textProperty().bind(this.currentTimeLblProperty);
-								//this.currentTimeLbl.setAlignment(Pos.CENTER_RIGHT);
 								this.currentTimeLbl.setTextFill(Color.web("#C46210"));
 								this.currentTimeLbl.minWidthProperty().bind(hbox7.widthProperty().multiply(new SimpleDoubleProperty(.15).subtract(fractionW)));
 							
 								this.slider2 = new Slider();
 								this.slider2.minWidthProperty().bind(hbox7.widthProperty().multiply(fractionW.multiply(1.5).add(.69)));
 								this.slider2.setStyle("-fx-track-color:#C46210;");
-								//this.slider2.valueProperty().bind(this.slider2ValueProperty);
 								
 								this.totalTimeLbl = new Label(this.totalTimeLblProperty.get());
 								this.totalTimeLbl.minWidthProperty().bind(hbox7.widthProperty().multiply(new SimpleDoubleProperty(.15).subtract(fractionW)));
-							//	this.totalTimeLbl.textProperty().bind(totalTimeLblProperty);
 								this.totalTimeLbl.setTextFill(Color.web("#C46210"));
-								//this.totalTimeLbl.setPrefWidth(30);
-								//hbox5.getChildren().addAll(this.currentTimeLbl,this.slider2,this.totalTimeLbl);
 							hbox7.getChildren().addAll(this.currentTimeLbl,this.slider2,this.totalTimeLbl);
 							hbox8 = new HBox();
 								hbox8.setStyle("-fx-background-color:#3B3C36;");
@@ -809,27 +626,6 @@ public class NewInstance {
 								});
 								
 								this.stopImageView.setOnMouseClicked(e->{
-								
-									/*if(this.stopProperty.get() =="stop_not_active"){
-									//CodeFor Stoping MediaPlayer
-										if(this.mediaView.getMediaPlayer() != null){
-											this.mediaView.getMediaPlayer().stop();
-										}
-										//And
-										this.playPauseProperty.set(false);
-										this.stopProperty.set("stop_active");
-										this.stopImageView.setImage(new Image(this.getClass().getClassLoader().getResource(this.stopProperty.get()+".jpg").toString()));
-									}
-									else{
-										
-										if(this.mediaView.getMediaPlayer() != null){
-											this.mediaView.getMediaPlayer().play();
-										}
-										
-										this.stopProperty.set("stop_not_active");
-										this.stopImageView.setImage(new Image(this.getClass().getClassLoader().getResource(this.stopProperty.get()+".jpg").toString()));
-									
-									}*/
 									if(this.mediaView.getMediaPlayer() != null){
 										this.mediaView.getMediaPlayer().stop();
 									}
@@ -858,8 +654,6 @@ public class NewInstance {
 								
 								this.bckwdImgView.setOnMouseReleased(e->{
 									if(this.bckwdProperty.get() == "b_not_active"){
-										//this.bckwdProperty.set("b_active");
-										//this.bckwdImgView.setImage(new Image(this.getClass().getClassLoader().getResource(this.bckwdProperty.get()+".jpg").toString()));
 									}
 									else{
 										this.bckwdProperty.set("b_not_active");
@@ -918,26 +712,6 @@ public class NewInstance {
 																 + "-fx-text-fill:#C46210;"
 																 + "");
 								
-								/*
-								this.gdTxtFldProperty.addListener(new ChangeListener<String>(){
-									@Override
-									public void changed(ObservableValue<? extends String> arg0, String arg1,String arg2) {
-										Timer timer = new Timer();
-										MyTimerTask mtt = new MyTimerTask(this);
-										timer.schedule(new TimerTask(){
-											@Override
-											public void run() {
-												System.out.println("Done");
-												
-											}
-											
-										}, 5000);
-										
-									}
-								});
-								*/
-								//this.generalDisplayTxtFld.sett
-								//this.generalDisplayTxtFld.s
 								this.generalDisplayTxtFld.minWidthProperty().bind(hbox9.widthProperty().multiply(fractionW.multiply(2).add(.64)));
 								hbox9.getChildren().addAll(this.playPauseImgView,this.stopImageView,this.bckwdImgView,this.fwdImgView,this.generalDisplayTxtFld);
 								
@@ -1002,59 +776,7 @@ public class NewInstance {
 									this.openPlayListImageView.setImage(new Image(this.getClass().getClassLoader().getResource("playlist_not_active.jpg").toString()));
 								});
 								this.openPlayListImageView.setOnMouseClicked(e->{
-									/*
-									Stage playListStage = new Stage();
 									
-									VBox pVbox = new VBox();
-										HBox hbox = new HBox();
-											hbox.setPadding(new Insets(3));
-											hbox.setAlignment(Pos.CENTER_RIGHT);
-											hbox.setSpacing(10);
-											
-											ImageView playlistReloadImgView = new ImageView(new Image(this.getClass().getClassLoader().getResource("reload_not_active.jpg").toString()));
-											playlistReloadImgView.setOnMouseClicked(event->{
-												pVbox.getChildren().remove(1,pVbox.getChildren().size()-1);
-												decoratePlayListStage(pVbox);
-											});
-											
-											playlistReloadImgView.setOnMouseEntered(event->{
-												playlistReloadImgView.setImage(new Image(this.getClass().getClassLoader().getResource("reload_active.jpg").toString()));
-											});
-											
-											playlistReloadImgView.setOnMouseExited(event->{
-												playlistReloadImgView.setImage(new Image(this.getClass().getClassLoader().getResource("reload_not_active.jpg").toString()));
-											});
-											
-											ImageView createNewPlayList = new ImageView(new Image(this.getClass().getClassLoader().getResource("addPlayList_not_active.jpg").toString()));
-											createNewPlayList.setOnMouseClicked(event->{
-												System.out.println("PlayCreated");
-											});
-											hbox.getChildren().addAll(playlistReloadImgView,createNewPlayList);
-											pVbox.getChildren().addAll(hbox);
-										pVbox.setSpacing(5);
-										pVbox.setPadding(new Insets(5));
-										pVbox.setMinHeight(400);
-										pVbox.setMinWidth(400);
-										pVbox.setStyle("-fx-background-color:#13213D;"
-												+ "-fx-border-insets:3;"
-												+ "-fx-border-style:solid inside;"
-												+ "-fx-border-color:blue;"
-												);
-									
-									Scene pScene = new Scene(pVbox);
-									pVbox.minWidthProperty().bind(pScene.widthProperty());
-									pVbox.setMaxWidth(600);
-									//List<String> list = new ArrayList<String>();
-									decoratePlayListStage(pVbox);			// For updating playlist stage as well
-									playListStage.setScene(pScene);
-									
-									//playListStage.setHeight(600);
-									//playListStage.setWidth(350);
-									playListStage.sizeToScene();
-									playListStage.setResizable(false);
-									playListStage.showAndWait();
-									
-									*/
 								Stage playListStage = new Stage();
 									
 									VBox rootVbox = new VBox();
@@ -1113,13 +835,10 @@ public class NewInstance {
 									rootVbox.minWidthProperty().bind(pScene.widthProperty());
 									rootVbox.setMaxWidth(600);
 									rootVbox.setMaxHeight(600);
-									//List<String> list = new ArrayList<String>();
 									decoratePlayListStage(vbox);			// For updating playlist stage as well
 									
 									playListStage.setScene(pScene);
 									
-									//playListStage.setHeight(600);
-									//playListStage.setWidth(350);
 									playListStage.sizeToScene();
 									playListStage.initOwner(this.stage);
 									playListStage.setResizable(false);
@@ -1172,8 +891,6 @@ public class NewInstance {
 
 				@Override
 				public void handle(MouseEvent event) {
-					// TODO Auto-generated method stub
-					//List<File> list = mediaPlayListFile.
 					playMedia(new File(label.getText()));
 					
 				}
@@ -1187,27 +904,7 @@ public class NewInstance {
 		fc.setInitialDirectory(new File(this.dsObj.getPathForSelection()));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("AIFF,FXM,FLV,HLS,MP3,MP4,WAV","*.aiff","*.aif","*.fxm","*.flv","*.m3u8","*.mp3","*.mp4","*.m4a","*.m4v","*.wav"));
 		List<File> files = fc.showOpenMultipleDialog(this.stage);
-		/*
-		if(files != null){
-			//files.removeAll(new ArrayList<File>(mediaPlayListFile.subList(0,this.mediaPlayListFile.size())));
-		//files.r
-			//this.mediaPlayListFile.removeAll(files);
-			if(this.mediaPlayListFile.size()>0){
-				//files.removeAll(new ArrayList<File>(mediaPlayListFile.subList(0,this.mediaPlayListFile.size())));
-				for(File file : files){
-					if(this.mediaPlayListFile.contains(file)){
-						files.remove(file);
-						System.out.println("\nRemoved : "+file.toString());
-					}
-				}
-			}
-			this.mediaPlayListFile.addAll(0,files);
-		}
-		else{
-			System.out.println("Selection is  : NULL ");
-		}
 		
-		*/
 		if(files != null){
 			//Test
 			if(files.size()>1){
@@ -1229,47 +926,13 @@ public class NewInstance {
 		}
 	}
 	private void createMediaListFile(){
-		/*
-		this.mediaPlayListFile = FXCollections.observableArrayList();
-		this.mediaPlayListFile.addListener(new ListChangeListener<File>(){
-			@Override
-			public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> change) {
-				if (change.next()) {
-					// TODO Auto-generated method stub
-					if (change.wasAdded()) {
-						//TODO - write logic for loading first media from this.mediaPlayListFile
-						for (File file : change.getList()) {
-							System.out.println(file.isDirectory()+" "+file.getName());
-						}
-					}
-					if (change.wasRemoved()) {
-						if (change.getList().size() > 0) {
-							//TODO - write logic for loading first media from this.mediaPlayListFile
-						}
-					} 
-				}
-			}
-		});
-		*/
 		this.mediaPlayListFile = FXCollections.observableSet();
 		this.mediaPlayListFile.addListener(new SetChangeListener<File>(){
 			@Override
 			public void onChanged(javafx.collections.SetChangeListener.Change<? extends File> change) {
 					System.out.println("Inside onChange Method");
-					/*
-					if(mediaPlayListFile.size()>1){
-						if(mediaView.getMediaPlayer() != null){
-							mediaView.getMediaPlayer().dispose();
-							System.out.println("Disposing MediaPlayer");
-						}	
-						else{
-							System.out.println("Null from outer change");
-						}
-					}
-					*/
-					// TODO Auto-generated method stub
+				
 					if (change.wasAdded()) {
-						//TODO - write logic for loading first media from this.mediaPlayListFile
 						System.out.println("From onChanged Method : "+change.getElementAdded().getName());
 						
 						if(mediaPlayListFile.size()>1){
@@ -1379,7 +1042,6 @@ public class NewInstance {
 				}
 				
 				if(finalFile.size()>0){
-					//this.mediaPlayListFile.addAll(finalFile);
 					if(finalFile.size()>1){
 						this.BulkAdditionOfFile = true;
 						this.mediaPlayListFile.addAll(finalFile.subList(1, finalFile.size()-1));
@@ -1416,7 +1078,6 @@ public class NewInstance {
 			try{
 				this.mediaView.getMediaPlayer().dispose();
 				this.mediaView.setMediaPlayer(null);
-				//this.mediaView.getMediaPlayer().getClass();
 			}
 			catch(Exception e){
 				System.out.println("hurray1 Exception");
@@ -1443,8 +1104,6 @@ public class NewInstance {
 				this.mediaView.setSmooth(true);
 				this.mediaView.fitHeightProperty().bind(this.scene.heightProperty().multiply(.86));
 				this.mediaView.fitWidthProperty().bind(this.scene.widthProperty().multiply(.99));
-				//this.mediaView.usesMirroring();
-				//this.mediaView.autosize();
 				
 				
 				//Binding of Property starts
@@ -1476,28 +1135,7 @@ public class NewInstance {
 						totalTimeProperty.set(newValue);
 					}
 				});
-				/*	THIS CODE STOPS VIDEO AND PLAY AUDIO OF VIDEOS
-				this.startTimeProperty.set(mediaPlayer.startTimeProperty().get());
-				mediaPlayer.startTimeProperty().addListener(new ChangeListener<Duration>(){
-					@Override
-					public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-						// TODO Auto-generated method stub
-						startTimeProperty.set(newValue);
-					}
-				});
-				
-				this.stopTimeProperty.set(mediaPlayer.stopTimeProperty().get());
-				mediaPlayer.stopTimeProperty().addListener(new ChangeListener<Duration>(){
-					@Override
-					public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-						// TODO Auto-generated method stub
-						stopTimeProperty.set(newValue);
-					}
-			
-				});
-				
-				*/
-				
+					
 				this.playPauseProperty.set(true);
 				int lastIndexOf = file.toString().lastIndexOf("\\\\");
 				this.titleProperty.set(file.getName());
@@ -1526,37 +1164,7 @@ public class NewInstance {
 				System.out.println("setOnHalted");
 			});
 			mediaPlayer.setOnEndOfMedia(()->{
-			//Date 24 jan
-			/*	System.out.println("setOnEndOfMedia : ");
-				mediaPlayer.dispose();
-				try{
-					this.mediaView.getMediaPlayer().dispose();
-					this.mediaView.setMediaPlayer(null);
-					//this.mediaView.getMediaPlayer().getClass();
-				}
-				catch(Exception e){
-					System.out.println("hurray1 Exception");
-					e.printStackTrace();
-					//playMedia(file);
-				}
-				
-				System.out.println("Disposed Successfully");
-			//	
-				//if(!this.mediaPlayListFile.isEmpty()){
-				//	this.playMedia(this.mediaPlayListFile.iterator().next());
-				//}
-				//else{
-				//	System.out.println("this.mediaPlayListFile is empty");
-				//}
-			//	
-				Object[] tmpFile = this.mediaPlayListFile.toArray();
-				if(!this.mediaPlayListFile.isEmpty()){
-					this.playMedia((File)tmpFile[(int)Math.random()*tmpFile.length]);
-				}
-				else{
-					System.out.println("this.mediaPlayListFile is empty");
-				}
-			*/
+			
 				reloadMedia();
 				System.out.println("reloaded");
 			});
@@ -1582,19 +1190,10 @@ public class NewInstance {
 		}
 		
 		System.out.println("Disposed Successfully");
-		/*
-		if(!this.mediaPlayListFile.isEmpty()){
-			this.playMedia(this.mediaPlayListFile.iterator().next());
-		}
-		else{
-			System.out.println("this.mediaPlayListFile is empty");
-		}
-		*/
+		
 		Object[] tmpFile = this.mediaPlayListFile.toArray();
 		if(!this.mediaPlayListFile.isEmpty()){
 			System.out.println("length : "+tmpFile.length);
-			//int x = (int)Math.random()*tmpFile.length;
-			//System.out.println("Played from random : "+x);
 			this.playMedia((File)tmpFile[(int)(Math.random()*tmpFile.length)]);
 		}
 		else{
@@ -1716,17 +1315,3 @@ public class NewInstance {
 		return this.gdTxtFldProperty;
 	}
 }
-/*
-class MyTimerTask extends TimerTask{
-	private NewInstance s;
-	public MyTimerTask(NewInstance s){
-		this.s = s;
-	}
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		this.s.getGDTxtProperty().set("Some Thing to Display.");
-		
-	}
-}
-*/
